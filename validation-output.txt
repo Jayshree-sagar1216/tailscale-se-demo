@@ -1,33 +1,7 @@
-100.64.151.32  jayshrees-macbook-air  jayshreesagar1204@  macOS  -                          
-100.83.58.50   tailscale-demo-server  jayshreesagar1204@  linux  idle, tx 217828 rx 213972  
+100.64.151.32  jayshrees-macbook-air  jayshreesagar1204@  macOS  -                                                        
+100.83.58.50   tailscale-demo-server  jayshreesagar1204@  linux  active; direct 18.220.17.216:58353, tx 224028 rx 220604  
 
 --- curl test port 3000 (over Tailscale) ---
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host tailscale-demo-server:3000 was resolved.
-* IPv6: (none)
-* IPv4: 100.83.58.50
-*   Trying 100.83.58.50:3000...
-* Connected to tailscale-demo-server (100.83.58.50) port 3000
-> GET / HTTP/1.1
-> Host: tailscale-demo-server:3000
-> User-Agent: curl/8.7.1
-> Accept: */*
-> 
-* Request completely sent off
-< HTTP/1.1 200 OK
-< Server: nginx/1.29.8
-< Date: Sun, 03 May 2026 05:41:29 GMT
-< Content-Type: text/html
-< Content-Length: 564
-< Last-Modified: Sun, 03 May 2026 04:22:53 GMT
-< Connection: keep-alive
-< ETag: "69f6cd9d-234"
-< Accept-Ranges: bytes
-< 
-{ [564 bytes data]
-100   564  100   564    0     0   3414      0 --:--:-- --:--:-- --:--:--  3418
-* Connection #0 to host tailscale-demo-server left intact
 <!DOCTYPE html>
 <html>
 <head><title>Internal Portal</title>
@@ -41,8 +15,24 @@ h1{color:#1a1a2e;}span{color:#e94560;font-weight:bold;}</style></head>
 <p>No public internet exposure. No VPN appliance. No bastion host.</p>
 </div></body></html>
 
---- curl test port 3000 (public internet - should timeout) ---
+--- curl test port 5000 (over Tailscale) ---
+<!DOCTYPE html>
+<html>
+<head><title>Private API</title>
+<meta charset="UTF-8">
+<style>body{font-family:sans-serif;max-width:600px;margin:80px auto;background:#f5f5f5;}
+.card{background:white;padding:40px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+h1{color:#1a1a2e;}span{color:#e94560;font-weight:bold;}</style></head>
+<body><div class="card">
+<h1>Private API Service</h1>
+<p>This endpoint is <span>not exposed</span> to the public internet.</p>
+<p>Reachable only by authorized Tailscale nodes with correct ACL permissions.</p>
+</div></body></html>
+
+--- curl test public internet (should timeout) ---
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:10 --:--:--     0
 curl: (28) Connection timed out after 10006 milliseconds
+
+--- Result: Connection timed out = not publicly exposed ---
