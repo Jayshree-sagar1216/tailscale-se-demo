@@ -121,6 +121,11 @@ ssh:
 
 This enforces least-privilege access — developers can only reach specific ports on tagged servers and nothing else.
 
+## Tailnet Information
+
+Tailnet name: tail4a417a.ts.net
+Tailscale account: jayshreesagar1204@gmail.com
+
 ## AI Disclosure
 
 I used ChatGPT during this project — primarily for help structuring the deploy script, scaffolding the HTML files, and drafting the README. I reviewed and tested every command myself, adapted the explanations based on what I actually observed, and made all the architecture and use case decisions independently. The AI helped speed up boilerplate and documentation work, while the implementation, troubleshooting, and validation were done by me.
