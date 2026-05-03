@@ -1,4 +1,4 @@
-# Secure Private Access with Tailscale — SE Take-Home Project
+# Secure Private Access with Tailscale — SE Project
 
 ## What I Built
 
@@ -51,7 +51,7 @@ sudo systemctl enable docker && sudo systemctl start docker
 sudo usermod -aG docker ubuntu
 curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up --ssh
-git clone https://github.com/jayshreesagar/tailscale-se-demo.git
+git clone https://github.com/jayshree-sagar1216/tailscale-se-demo.git
 cd tailscale-se-demo
 bash deploy.sh
 
