@@ -1,0 +1,17 @@
+{
+  "acls": [
+    {
+      "action": "accept",
+      "src": ["*"],
+      "dst": ["*:*"]
+    }
+  ],
+  "ssh": [
+    {
+      "action": "accept",
+      "src": ["jayshreesagar1204@gmail.com"],
+      "dst": ["autogroup:self"],
+      "users": ["ubuntu"]
+    }
+  ]
+}
